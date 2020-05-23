@@ -1,15 +1,15 @@
 #include <iostream>
 using namespace std;
+//template<typename T> void Shift(T arr[], const int n, int shift_num);
 
-void FillRand(const int n, int arr[]);
-void Print(int arr[], const int n);
-//void Shift(int arr[], const int n, int shift_num);
-int* push_front(int arr[], int& n, int val);
-int* push_back(int arr[], int& n, int val);
-int* pop_front(int arr[], int& n);
-int* pop_back(int arr[], int& n);
-int* erase(int arr[], int& n, int valnum);
-int* insert(int arr[], int& n, int val, int valnum);
+template<typename T> void FillRand(const int n, T arr[]);
+template<typename T> void Print(T arr[], const int n);
+template<typename T> T* push_front(T arr[], int& n, T val);
+template<typename T> T* push_back(T arr[], int& n, T val);
+template<typename T> T* pop_front(T arr[], int& n);
+template<typename T> T* pop_back(T arr[], int& n);
+template<typename T> T* erase(T arr[], int& n, int valnum);
+template<typename T> T* insert(T arr[], int& n, T val, int valnum);
 
 void main() {
 
@@ -46,34 +46,22 @@ void main() {
 	Print(arr, n);
 
 }
-
-void FillRand(const int n, int arr[]) {
+template<typename T> void FillRand(const int n, T arr[]) {
 
 	for (int i = 0; i < n; ++i) {
 		arr[i] = rand() % 100 + 1;
 	}
 	Print(arr, n);
 }
-void Print(int arr[], const int n) {
+template<typename T> void Print(T arr[], const int n) {
 	cout << endl;
 	for (int i = 0; i < n; ++i) {
 		cout << arr[i] << "  ";
 	}
 	cout << endl;
 }
-//void Shift(int arr[], const int n, int shift_num) {
-//
-//	for (int i = 0; i < shift_num; ++i) {
-//		int buf = arr[0];
-//		for (int j = 0; j < n; ++j) {
-//			arr[j] = arr[j + 1];
-//		}
-//	}
-//
-//}
-
-int* push_front(int arr[], int& n, int val) {
-	int* buf = new int[n + 1]{};
+template<typename T> T* push_front(T arr[], int& n, T val) {
+	T* buf = new T[n + 1]{};
 	for (int i = 0; i < n; ++i) {
 		buf[i + 1] = arr[i];
 	}
@@ -83,8 +71,8 @@ int* push_front(int arr[], int& n, int val) {
 	n++;
 	return arr;
 }
-int* insert(int arr[], int& n, int val, int valnum) {
-	int* buf = new int[n + 1]{};
+template<typename T> T* insert(T arr[], int& n, T val, int valnum) {
+	T* buf = new T[n + 1]{};
 	for (int i = 0; i < valnum; ++i) buf[i] = arr[i];
 	for (int i = valnum; i < n; ++i) buf[i + 1] = arr[i];
 	delete[] arr;
@@ -93,8 +81,8 @@ int* insert(int arr[], int& n, int val, int valnum) {
 	n++;
 	return arr;
 }
-int* pop_front(int arr[], int& n) {
-	int* buf = new int[n - 1]{};
+template<typename T> T* pop_front(T arr[], int& n) {
+	T* buf = new T[n - 1]{};
 	n--;
 	for (int i = 0; i < n; ++i) {
 		buf[i] = arr[i + 1];
@@ -104,8 +92,8 @@ int* pop_front(int arr[], int& n) {
 
 	return arr;
 }
-int* pop_back(int arr[], int& n) {
-	int* buf = new int[n - 1]{};
+template<typename T> T* pop_back(T arr[], int& n) {
+	T* buf = new T[n - 1]{};
 	n--;
 	for (int i = 0; i < n; ++i) {
 		buf[i] = arr[i];
@@ -115,8 +103,8 @@ int* pop_back(int arr[], int& n) {
 
 	return arr;
 }
-int* push_back(int arr[], int& n, int val) {
-	int* buf = new int[n + 1]{};
+template<typename T> T* push_back(T arr[], int& n, T val) {
+	T* buf = new T[n + 1]{};
 	for (int i = 0; i < n; ++i) {
 		buf[i] = arr[i];
 	}
@@ -126,8 +114,8 @@ int* push_back(int arr[], int& n, int val) {
 	n++;
 	return arr;
 }
-int* erase(int arr[], int& n, int valnum) {
-	int* buf = new int[n - 1]{};
+template<typename T> T* erase(T arr[], int& n, int valnum) {
+	T* buf = new T[n - 1]{};
 	for (int i = 0; i < valnum; ++i) buf[i] = arr[i];
 	for (int i = valnum; i < n; ++i) buf[i] = arr[i + 1];
 	delete[] arr;
@@ -135,3 +123,14 @@ int* erase(int arr[], int& n, int valnum) {
 	n--;
 	return arr;
 }
+
+//template<typename T> void Shift(T arr[], const int n, int shift_num) {
+//
+//	for (int i = 0; i < shift_num; ++i) {
+//		T buf = arr[0];
+//		for (int j = 0; j < n; ++j) {
+//			arr[j] = arr[j + 1];
+//		}
+//	}
+//
+//}
