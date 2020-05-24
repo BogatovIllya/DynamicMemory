@@ -78,6 +78,29 @@ template<typename T> T* erase(T arr[], int& n, int valnum) {
 	return arr;
 }
 
+template<typename T> T minmax_mas(bool min_max, T arr[], int n) {
+	T num = arr[0];
+	if (min_max) {
+		for (int i = 0; i < n; ++i)
+		{
+			if (arr[i] > num)
+			{
+				num = arr[i];
+			}
+		}
+	}
+	else {
+		for (int i = 0; i < n; ++i)
+		{
+			if (arr[i] < num)
+			{
+				num = arr[i];
+			}
+		}
+	}
+	return num;
+}
+
 //template<typename T> void Shift(T arr[], const int n, int shift_num) {
 //
 //	for (int i = 0; i < shift_num; ++i) {
