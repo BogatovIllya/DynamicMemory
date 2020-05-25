@@ -12,7 +12,7 @@ void main() {
 	
 	/*cout << mm_mas(0, arr, n);*/
 	//Shift(arr, n, 1, 1);
-	dec_to_bin();
+	//dec_to_bin();
 	//print(arr, n);
 	delete[] arr;
 }
